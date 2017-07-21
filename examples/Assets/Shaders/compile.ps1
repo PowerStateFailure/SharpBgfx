@@ -13,7 +13,7 @@ Function Compile ($filter, $type, $profile, $glProfile) {
 	}
 }
 
-foreach ($dir in (ls -Directory)) {
+foreach ($dir in (Get-ChildItem | ?{ $_.PSIsContainer })) {
 	Compile "vs_*.sc" "vertex" "vs_4_0" "120"
 	Compile "fs_*.sc" "fragment" "ps_4_0" "120"
     Compile "cs_*.sc" "compute" "cs_5_0" "430"
